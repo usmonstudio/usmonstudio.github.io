@@ -3,448 +3,421 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Usmon Studio | Усмон Студио</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<title>The Usmon Ismonov Studio</title>
+
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --dark: #0A0A0A;
-    --dark2: #111111;
-    --dark3: #1A1A1A;
-    --white: #F5F0E8;
-    --gray: #888;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--dark); color: var(--white); font-family: 'Manrope', sans-serif; font-weight: 300; overflow-x: hidden; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-  /* LANG SWITCHER */
-  .lang-bar {
-    position: fixed; top: 0; right: 0; z-index: 200;
-    padding: 12px 60px;
-    display: flex; gap: 12px; align-items: center;
-  }
-  .lang-btn {
-    background: none; border: 1px solid rgba(201,168,76,0.3);
-    color: var(--white); font-family: 'Manrope', sans-serif;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    padding: 6px 14px; cursor: pointer; transition: all 0.3s;
-  }
-  .lang-btn.active, .lang-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); font-weight: 700; }
+body{
+background:
+radial-gradient(circle at top,#666,#000 75%);
+color:#fff;
+overflow-x:hidden;
+}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 24px 60px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
-    backdrop-filter: blur(4px);
-  }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { color: var(--white); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: opacity 0.3s, color 0.3s; }
-  .nav-links a:hover { opacity: 1; color: var(--gold); }
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
 
-  /* HERO */
-  .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 60% 50%, rgba(201,168,76,0.1) 0%, transparent 70%),
-                radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 60%);
-  }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-  }
-  .hero-content { text-align: center; position: relative; z-index: 2; animation: fadeUp 1.2s ease forwards; }
-  .hero-tag { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); opacity: 0.9; margin-bottom: 24px; }
-  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(64px, 10vw, 120px); font-weight: 300; line-height: 0.9; color: var(--white); margin-bottom: 8px; }
-  .hero-title span { color: var(--gold); font-style: italic; }
-  .hero-roles { display: flex; gap: 32px; justify-content: center; margin-top: 28px; margin-bottom: 48px; flex-wrap: wrap; }
-  .hero-role { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.5; padding: 8px 20px; border: 1px solid rgba(201,168,76,0.2); }
-  .hero-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0 auto; }
-  .hero-cities { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.35; margin-top: 20px; }
+.glass{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.2);
+border-radius:30px;
+box-shadow:
+0 0 35px rgba(255,255,255,.12);
+transition:.5s;
+}
 
-  /* SECTIONS */
-  section { padding: 120px 60px; }
-  .section-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; opacity: 0.8; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 300; line-height: 1.1; margin-bottom: 32px; }
-  .divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 32px; opacity: 0.6; }
+.glass:hover{
+box-shadow:
+0 0 45px rgba(255,255,255,.35);
+transform:translateY(-5px);
+}
 
-  /* ABOUT */
-  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.1); }
-  .about-text p { font-size: 15px; line-height: 1.9; opacity: 0.7; margin-bottom: 20px; }
-  .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .about-card { background: var(--dark3); padding: 28px 24px; border: 1px solid rgba(201,168,76,0.08); transition: border-color 0.3s, transform 0.3s; }
-  .about-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
-  .about-card:first-child { grid-column: span 2; }
-  .about-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; color: var(--gold); font-weight: 300; line-height: 1; margin-bottom: 8px; }
-  .about-card-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; }
 
-  /* SERVICES */
-  .services { background: var(--dark); }
-  .services-header { text-align: center; max-width: 600px; margin: 0 auto 80px; }
-  .services-header .divider { margin: 0 auto 32px; }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); }
-  .service-item { background: var(--dark); padding: 48px 32px; transition: background 0.3s; }
-  .service-item:hover { background: var(--dark3); }
-  .service-icon { font-size: 32px; margin-bottom: 24px; display: block; }
-  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 16px; font-weight: 400; }
-  .service-desc { font-size: 13px; line-height: 1.8; opacity: 0.55; }
-  .service-badge { display: inline-block; margin-top: 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 4px 12px; }
+.hero{
+min-height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
 
-  /* EQUIPMENT */
-  .equipment { background: var(--dark2); }
-  .equip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; }
-  .equip-item { background: var(--dark3); padding: 36px 28px; border: 1px solid rgba(201,168,76,0.06); text-align: center; transition: all 0.3s; }
-  .equip-item:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-4px); }
-  .equip-icon { font-size: 36px; margin-bottom: 16px; display: block; }
-  .equip-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; margin-bottom: 8px; }
-  .equip-desc { font-size: 12px; opacity: 0.45; line-height: 1.7; }
+.hero-box{
+padding:55px;
+text-align:center;
+animation:show 1.5s ease;
+}
 
-  /* CONTACT */
-  .contact { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.1); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .contact-links { display: flex; flex-direction: column; gap: 4px; margin-top: 40px; }
-  .contact-link { display: flex; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; color: var(--white); transition: color 0.3s; }
-  .contact-link:hover { color: var(--gold); }
-  .contact-link:hover .link-arrow { transform: translateX(6px); }
-  .link-icon { font-size: 20px; width: 36px; }
-  .link-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.45; display: block; margin-bottom: 4px; }
-  .link-val { font-size: 14px; }
-  .link-arrow { margin-left: auto; opacity: 0.3; transition: transform 0.3s; }
+h1{
+font-size:42px;
+font-weight:700;
+}
 
-  .socials-row { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
-  .social-btn { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border: 1px solid rgba(201,168,76,0.2); text-decoration: none; color: var(--white); font-size: 12px; letter-spacing: 1px; transition: all 0.3s; }
-  .social-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); font-weight: 700; }
+.gold{
+color:#d4af37;
+}
 
-  .contact-info-box { background: var(--dark3); padding: 48px; border: 1px solid rgba(201,168,76,0.1); }
-  .contact-info-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: 32px; font-weight: 300; }
-  .info-row { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .info-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .info-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 10px; }
-  .info-val { font-size: 15px; line-height: 1.8; opacity: 0.8; }
-  .info-val a { color: var(--white); text-decoration: none; display: block; transition: color 0.3s; }
-  .info-val a:hover { color: var(--gold); }
+.subtitle{
+margin-top:20px;
+font-size:18px;
+color:#ddd;
+}
 
-  /* GUARANTEE */
-  .guarantee-bar { background: var(--gold); color: var(--dark); padding: 28px 60px; text-align: center; }
-  .guarantee-bar p { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
 
-  /* FOOTER */
-  footer { background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.08); padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
-  .footer-copy { font-size: 11px; opacity: 0.3; }
-  .footer-phones { font-size: 12px; opacity: 0.5; }
+section{
+padding:35px 0;
+}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* LANG */
-  .tj { display: none; }
-  body.lang-tj .ru { display: none; }
-  body.lang-tj .tj { display: block; }
-  body.lang-tj .tj-inline { display: inline; }
-  body.lang-tj .ru-inline { display: none; }
-  .tj-inline { display: none; }
-  .ru-inline { display: inline; }
+.card{
+padding:35px;
+margin-bottom:30px;
+animation:show 1s ease;
+}
 
-  @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .nav-links { display: none; }
-    .lang-bar { padding: 12px 24px; }
-    section { padding: 80px 24px; }
-    .about, .contact { grid-template-columns: 1fr; gap: 48px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .equip-grid { grid-template-columns: 1fr 1fr; }
-    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
-    .contact-info-box { padding: 32px 24px; }
-    .guarantee-bar { padding: 24px; }
-    .hero-roles { gap: 12px; }
-  }
+
+h2{
+font-size:30px;
+margin-bottom:15px;
+}
+
+
+p{
+font-size:17px;
+line-height:1.8;
+color:#ddd;
+}
+
+
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+
+.service{
+padding:25px;
+}
+
+
+.service h3{
+margin-bottom:12px;
+}
+
+
+
+.contact-buttons{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+padding:40px;
+}
+
+
+.btn{
+width:240px;
+padding:18px;
+border-radius:50px;
+text-align:center;
+text-decoration:none;
+color:white;
+font-size:18px;
+font-weight:bold;
+transition:.5s;
+}
+
+
+.whatsapp{
+background:#25D366;
+box-shadow:
+0 0 25px #25D366;
+}
+
+
+.instagram{
+background:#E1306C;
+box-shadow:
+0 0 25px #E1306C;
+}
+
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+
+
+footer{
+padding:40px;
+text-align:center;
+color:#aaa;
+}
+
+
+
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(60px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+@media(max-width:600px){
+
+h1{
+font-size:32px;
+}
+
+.hero-box{
+padding:30px;
+}
+
+}
+
 </style>
+
 </head>
+
+
 <body>
 
-<!-- LANG SWITCHER -->
-<div class="lang-bar">
-  <button class="lang-btn active" onclick="setLang('ru')">RU</button>
-  <button class="lang-btn" onclick="setLang('tj')">ТЧ</button>
+
+<div class="container">
+
+
+<div class="hero">
+
+<div class="hero-box glass">
+
+<h1>
+The <span class="gold">Usmon Ismonov</span> Studio
+</h1>
+
+<p class="subtitle">
+Профессиональная фото-, видеосъёмка и свадебное оформление.
+Более 20 лет опыта в создании важных моментов.
+</p>
+
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">Usmon Studio</div>
-  <ul class="nav-links">
-    <li><a href="#about"><span class="ru-inline">О нас</span><span class="tj-inline">Дар бораи мо</span></a></li>
-    <li><a href="#services"><span class="ru-inline">Услуги</span><span class="tj-inline">Хидматҳо</span></a></li>
-    <li><a href="#equipment"><span class="ru-inline">Оборудование</span><span class="tj-inline">Таҷҳизот</span></a></li>
-    <li><a href="#contact"><span class="ru-inline">Контакты</span><span class="tj-inline">Тамос</span></a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Бохтар · Ҷалолиддин Балхӣ · Тоҷикистон</div>
-    <div class="hero-title">Usmon<br><span>Studio</span></div>
-    <div class="hero-roles">
-      <div class="hero-role">📸 <span class="ru-inline">Фотограф</span><span class="tj-inline">Аккос</span></div>
-      <div class="hero-role">🎬 <span class="ru-inline">Видеограф</span><span class="tj-inline">Видеограф</span></div>
-      <div class="hero-role">🎞️ <span class="ru-inline">Монтажёр</span><span class="tj-inline">Монтажёр</span></div>
-    </div>
-    <div class="hero-line"></div>
-    <div class="hero-cities">Бохтар · Ҷалолиддин Балхӣ</div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about fade-in" id="about">
-  <div class="about-text">
-    <div class="section-label ru">О студии</div>
-    <div class="section-label tj">Дар бораи студия</div>
-    <h2 class="section-title ru">Мы создаём то,<br>что говорит само за себя</h2>
-    <h2 class="section-title tj">Мо чизеро месозем,<br>ки худаш сухан мегӯяд</h2>
-    <div class="divider"></div>
-    <p class="ru">Usmon Studio — профессиональная студия фото и видео в Таджикистане. Мы работаем в Бохтаре и Джалолиддин Балхи, охватывая клиентов по всему региону.</p>
-    <p class="tj">Usmon Studio — студияи касбии акс ва видео дар Тоҷикистон. Мо дар Бӯхтор ва Ҷалолиддин Балхӣ фаъолият мекунем.</p>
-    <p class="ru">Снимаем свадьбы, торжества и любые события. Наша команда — это фотограф, видеограф и профессиональный монтажёр. Если вам не понравится результат — переделаем по вашему вкусу, бесплатно.</p>
-    <p class="tj">Мо арӯсӣ, маросимҳо ва ҳар гуна чорабиниҳоро мегирем. Агар натиҷа писандатон набошад — бепул аз нав кор мекунем.</p>
-  </div>
-  <div class="about-cards">
-    <div class="about-card">
-      <div class="about-num">100%</div>
-      <div class="about-card-label ru">Гарантия результата</div>
-      <div class="about-card-label tj">Кафолати натиҷа</div>
-    </div>
-    <div class="about-card">
-      <div class="about-num">📸</div>
-      <div class="about-card-label ru">Фото + Видео</div>
-      <div class="about-card-label tj">Акс + Видео</div>
-    </div>
-    <div class="about-card">
-      <div class="about-num">🚁</div>
-      <div class="about-card-label ru">Дрон съёмка</div>
-      <div class="about-card-label tj">Дрон</div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services fade-in" id="services">
-  <div class="services-header">
-    <div class="section-label ru">Услуги</div>
-    <div class="section-label tj">Хидматҳо</div>
-    <h2 class="section-title ru">Что мы делаем</h2>
-    <h2 class="section-title tj">Мо чӣ кор мекунем</h2>
-    <div class="divider"></div>
-  </div>
-  <div class="services-grid">
-    <div class="service-item">
-      <span class="service-icon">📸</span>
-      <div class="service-name ru">Фотография</div>
-      <div class="service-name tj">Аккосӣ</div>
-      <p class="service-desc ru">Профессиональная фотосъёмка на свадьбах, праздниках и любых мероприятиях. Красивые кадры, которые останутся навсегда.</p>
-      <p class="service-desc tj">Аккосии касбӣ дар арӯсӣ, ид ва ҳар гуна чорабиниҳо. Акси зебое, ки барои ҳамеша мемонад.</p>
-    </div>
-    <div class="service-item">
-      <span class="service-icon">🎬</span>
-      <div class="service-name ru">Видеосъёмка</div>
-      <div class="service-name tj">Видеогирӣ</div>
-      <p class="service-desc ru">Видеосъёмка с профессиональной камерой и дроном. Монтаж включён — если не понравится, переделаем по вашему вкусу.</p>
-      <p class="service-desc tj">Видеогирӣ бо камераи касбӣ ва дрон. Монтаж дохил аст — агар писандатон набошад, аз нав мекунем.</p>
-      <span class="service-badge ru">Монтаж включён ✓</span>
-      <span class="service-badge tj">Монтаж дохил аст ✓</span>
-    </div>
-    <div class="service-item">
-      <span class="service-icon">🎵</span>
-      <div class="service-name ru">Музыканты</div>
-      <div class="service-name tj">Мусиқачиён</div>
-      <p class="service-desc ru">Живая музыка на ваш праздник. Наши музыканты создадут нужную атмосферу для любого события.</p>
-      <p class="service-desc tj">Мусиқаи зинда барои идатон. Мусиқачиёни мо фазои дилхоҳро барои ҳар чорабинӣ месозанд.</p>
-    </div>
-    <div class="service-item">
-      <span class="service-icon">🚗</span>
-      <div class="service-name ru">Машина для зятя</div>
-      <div class="service-name tj">Мошин барои зять</div>
-      <p class="service-desc ru">Красивая машина для жениха. Украсим и подготовим всё на высшем уровне для вашего особенного дня.</p>
-      <p class="service-desc tj">Мошини зебо барои домод. Мо ҳама чизро барои рӯзи хоси шумо ороиш медиҳем.</p>
-    </div>
-    <div class="service-item">
-      <span class="service-icon">💐</span>
-      <div class="service-name ru">Украшение машин</div>
-      <div class="service-name tj">Ороиши мошин</div>
-      <p class="service-desc ru">Профессиональное украшение автомобилей для свадеб и торжеств. Красиво, стильно, незабываемо.</p>
-      <p class="service-desc tj">Ороиши касбии мошин барои арӯсӣ ва маросимҳо. Зебо, бостил, фаромӯшнашаванда.</p>
-    </div>
-    <div class="service-item">
-      <span class="service-icon">🏡</span>
-      <div class="service-name ru">Украшение дома</div>
-      <div class="service-name tj">Ороиши хона</div>
-      <p class="service-desc ru">Украсим ваш дом или зал для торжества. Создадим атмосферу праздника, о которой вы мечтали.</p>
-      <p class="service-desc tj">Хона ё толори шуморо барои маросим ороиш медиҳем. Фазои идеро, ки орзу доштед, месозем.</p>
-    </div>
-  </div>
-</section>
-
-<!-- EQUIPMENT -->
-<section class="equipment fade-in" id="equipment">
-  <div class="section-label ru">Оборудование</div>
-  <div class="section-label tj">Таҷҳизот</div>
-  <h2 class="section-title ru">Наша техника</h2>
-  <h2 class="section-title tj">Таҷҳизоти мо</h2>
-  <div class="divider"></div>
-  <div class="equip-grid">
-    <div class="equip-item">
-      <span class="equip-icon">📷</span>
-      <div class="equip-name ru">Камера</div>
-      <div class="equip-name tj">Камера</div>
-      <div class="equip-desc ru">Профессиональная камера для съёмки фото и видео</div>
-      <div class="equip-desc tj">Камераи касбӣ барои акс ва видео</div>
-    </div>
-    <div class="equip-item">
-      <span class="equip-icon">🚁</span>
-      <div class="equip-name ru">Дрон</div>
-      <div class="equip-name tj">Дрон</div>
-      <div class="equip-desc ru">Аэросъёмка с высоты для уникальных кадров</div>
-      <div class="equip-desc tj">Аэрогирӣ аз баландӣ барои кадрҳои беназир</div>
-    </div>
-    <div class="equip-item">
-      <span class="equip-icon">🎞️</span>
-      <div class="equip-name ru">Монтаж</div>
-      <div class="equip-name tj">Монтаж</div>
-      <div class="equip-desc ru">Профессиональный монтаж. Переделаем по вкусу клиента</div>
-      <div class="equip-desc tj">Монтажи касбӣ. Аз нав мекунем бо завқи мизоҷ</div>
-    </div>
-    <div class="equip-item">
-      <span class="equip-icon">✨</span>
-      <div class="equip-name ru">Декор</div>
-      <div class="equip-name tj">Декор</div>
-      <div class="equip-desc ru">Украшения для машин, домов и залов торжеств</div>
-      <div class="equip-desc tj">Ороиш барои мошин, хона ва толорҳо</div>
-    </div>
-  </div>
-</section>
-
-<!-- GUARANTEE BAR -->
-<div class="guarantee-bar">
-  <p class="ru">⭐ Гарантия: если вам не понравится монтаж — переделаем бесплатно по вашему вкусу ⭐</p>
-  <p class="tj">⭐ Кафолат: агар монтаж писандатон набошад — бепул аз нав мекунем ⭐</p>
 </div>
 
-<!-- CONTACT -->
-<section class="contact fade-in" id="contact">
-  <div>
-    <div class="section-label ru">Контакты</div>
-    <div class="section-label tj">Тамос</div>
-    <h2 class="section-title ru">Свяжитесь<br>с нами</h2>
-    <h2 class="section-title tj">Бо мо<br>тамос гиред</h2>
-    <div class="divider"></div>
-    <p class="ru" style="opacity:0.6; font-size:14px; line-height:1.8;">Готовы снять ваш праздник? Напишите или позвоните — ответим быстро!</p>
-    <p class="tj" style="opacity:0.6; font-size:14px; line-height:1.8;">Барои гирифтани идатон омодаем? Занг занед ё нависед — зуд ҷавоб медиҳем!</p>
-    <div class="contact-links">
-      <a class="contact-link" href="tel:+992750556688">
-        <span class="link-icon">📞</span>
-        <div>
-          <span class="link-label ru">Телефон 1</span>
-          <span class="link-label tj">Телефон 1</span>
-          <span class="link-val">+992 750 556 688</span>
-        </div>
-        <span class="link-arrow">→</span>
-      </a>
-      <a class="contact-link" href="tel:+992934066688">
-        <span class="link-icon">📞</span>
-        <div>
-          <span class="link-label ru">Телефон 2</span>
-          <span class="link-label tj">Телефон 2</span>
-          <span class="link-val">+992 934 066 688</span>
-        </div>
-        <span class="link-arrow">→</span>
-      </a>
-      <a class="contact-link" href="https://t.me/camismonov" target="_blank">
-        <span class="link-icon">✈️</span>
-        <div>
-          <span class="link-label">Telegram</span>
-          <span class="link-val">@camismonov</span>
-        </div>
-        <span class="link-arrow">→</span>
-      </a>
-      <a class="contact-link" href="https://instagram.com/camismonov" target="_blank">
-        <span class="link-icon">📸</span>
-        <div>
-          <span class="link-label">Instagram</span>
-          <span class="link-val">@camismonov</span>
-        </div>
-        <span class="link-arrow">→</span>
-      </a>
-    </div>
-    <div class="socials-row">
-      <a class="social-btn" href="https://instagram.com/camismonov" target="_blank">📸 Instagram</a>
-      <a class="social-btn" href="https://t.me/camismonov" target="_blank">✈️ Telegram</a>
-      <a class="social-btn" href="https://facebook.com/camismonov" target="_blank">👤 Facebook</a>
-      <a class="social-btn" href="https://twitter.com/camismonov" target="_blank">𝕏 Twitter</a>
-    </div>
-  </div>
-  <div class="contact-info-box">
-    <h3 class="ru">Информация</h3>
-    <h3 class="tj">Маълумот</h3>
-    <div class="info-row">
-      <div class="info-label ru">Локация</div>
-      <div class="info-label tj">Макон</div>
-      <div class="info-val">📍 Бохтар · Ҷалолиддин Балхӣ<br>Тоҷикистон</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label ru">Телефоны</div>
-      <div class="info-label tj">Телефонҳо</div>
-      <div class="info-val">
-        <a href="tel:+992750556688">+992 750 556 688</a>
-        <a href="tel:+992934066688">+992 934 066 688</a>
-      </div>
-    </div>
-    <div class="info-row">
-      <div class="info-label ru">Социальные сети</div>
-      <div class="info-label tj">Шабакаҳои иҷтимоӣ</div>
-      <div class="info-val">
-        <a href="https://instagram.com/camismonov" target="_blank">Instagram: @camismonov</a>
-        <a href="https://t.me/camismonov" target="_blank">Telegram: @camismonov</a>
-        <a href="https://facebook.com/camismonov" target="_blank">Facebook: @camismonov</a>
-        <a href="https://twitter.com/camismonov" target="_blank">Twitter: @camismonov</a>
-      </div>
-    </div>
-    <div class="info-row">
-      <div class="info-label ru">Режим работы</div>
-      <div class="info-label tj">Соати кор</div>
-      <div class="info-val ru" style="opacity:0.7">Ежедневно — по договорённости</div>
-      <div class="info-val tj" style="opacity:0.7">Ҳар рӯз — тибқи созиш</div>
-    </div>
-  </div>
+
+
+<section>
+
+
+<div class="card glass">
+
+<h2>О студии</h2>
+
+<p>
+The Usmon Ismonov Studio — команда профессиональных
+фотографов, видеографов, монтажёров и специалистов
+по аэросъёмке. Мы создаём качественные проекты
+и отвечаем за каждый результат.
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h2>Опыт и возможности</h2>
+
+<p>
+Более 20 лет работы в сфере свадебных мероприятий.
+Благодаря современному оборудованию и нескольким
+специалистам можем работать одновременно на разных
+мероприятиях без потери качества.
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h2>Команда и оборудование</h2>
+
+<p>
+В нашей работе используются профессиональные камеры,
+дроны и современная техника. Наши специалисты создают
+красивые кадры, качественный монтаж и уникальную атмосферу.
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h2>Наши услуги</h2>
+
+
+<div class="services">
+
+
+<div class="service glass">
+<h3>📸 Свадебная фотосъёмка</h3>
+<p>
+Красивые фотографии с профессиональной обработкой.
+</p>
+</div>
+
+
+<div class="service glass">
+<h3>🎥 Свадебная видеосъёмка</h3>
+<p>
+Фильмы и клипы с качественным монтажом.
+</p>
+</div>
+
+
+<div class="service glass">
+<h3>🚁 Дрон-съёмка</h3>
+<p>
+Воздушные кадры с необычными ракурсами.
+</p>
+</div>
+
+
+<div class="service glass">
+<h3>🎬 Монтаж</h3>
+<p>
+Профессиональная обработка видео и цветокоррекция.
+</p>
+</div>
+
+
+<div class="service glass">
+<h3>🚘 Свадебные автомобили</h3>
+<p>
+Оформление машин для красивого свадебного стиля.
+</p>
+</div>
+
+
+<div class="service glass">
+<h3>🏠 Украшение дома</h3>
+<p>
+Создание праздничной атмосферы и оформление.
+</p>
+</div>
+
+
+<div class="service glass">
+<h3>🌹 Цветочные композиции</h3>
+<p>
+Розы и подарочное оформление для особенных моментов.
+</p>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h2>Гарантия качества</h2>
+
+<p>
+Если клиенту не понравится монтаж или будут обнаружены
+ошибки, мы бесплатно внесём исправления и переделаем
+работу до полного согласования.
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h2>Поддержка клиентов</h2>
+
+<p>
+Есть вопросы, пожелания или предложения?
+Свяжитесь с нами через Instagram или WhatsApp.
+Мы всегда готовы помочь.
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h2>Отзывы клиентов</h2>
+
+<p>
+Ваше мнение важно для нас.
+Отправляйте отзывы через Instagram или WhatsApp.
+Лучшие отзывы будут опубликованы в разделе отзывов.
+</p>
+
+</div>
+
+
+
+<div class="card glass">
+
+<h2>Свяжитесь с нами</h2>
+
+<div class="contact-buttons">
+
+
+<a class="btn whatsapp"
+href="https://wa.me/992750556688">
+WhatsApp
+</a>
+
+
+<a class="btn instagram"
+href="https://instagram.com/TheUsmonIsmonovStudio">
+Instagram
+</a>
+
+
+</div>
+
+</div>
+
+
 </section>
 
-<!-- FOOTER -->
+
 <footer>
-  <div class="footer-logo">Usmon Studio</div>
-  <div class="footer-phones">+992 750 556 688 · +992 934 066 688</div>
-  <div class="footer-copy">© 2024 Usmon Studio · Tajikistan</div>
+© 2026 The Usmon Ismonov Studio
 </footer>
 
-<script>
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Language switch
-  function setLang(lang) {
-    document.body.className = lang === 'tj' ? 'lang-tj' : '';
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-  }
-</script>
+</div>
+
+
 </body>
 </html>
